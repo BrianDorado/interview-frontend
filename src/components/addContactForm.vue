@@ -2,14 +2,12 @@
   <!-- action -->
   <form class="add-contact-form" @submit="_onSubmit">
     <h2>Create Contact</h2>
-    <!-- <form @submit="_validate" action='apiURL' method='post'> -->
-    <div v-for="(field, index) in fields" :key="field.label"> 
-      <label for="field.label" class="item" :index="index">
-        {{ field.label }}
-        <input :type="field.type" :placeholder="field.placeHolder"
-        v-model="field.name">
-      </label>
-    </div>
+    <!-- <form @submit="_validate" action='apiURL' metho
+    d='post'> -->
+    <div>
+      <label>Label</label>
+      <input/>
+      <div>
     <button type="submit">Submit</button>
   </form>
 </template>
