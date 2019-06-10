@@ -1,7 +1,7 @@
 <template>
   <div class="contact-list">
     <ul>
-      <li v-for="contact in contacts" :key="contact.id" class="item">{{ contact.name }}</li>
+      <li v-for="contact in contacts" :key="contact.id" class="item" :class="{favorite: contact.is_favorite}">{{ contact.name }}</li>
     </ul>
   </div>
 </template>
@@ -31,11 +31,21 @@ export default {
 
 <style scoped lang="sass">
 .contact-list
+  overflow: auto
+  height: 50vh 
   display: flex
   justify-content: center
-  overflow: auto
+  margin: auto
 .item
+  padding: 10px
   list-style: none
+  width: 60vw
+  text-align: left
 .item:nth-of-type(odd)
   background-color:#eaf1f8
+.item:hover
+  text-decoration: underline
+.favorite
+  font-weight: bold
+
 </style>
