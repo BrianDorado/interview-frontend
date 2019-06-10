@@ -2,6 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link>
+      <router-link to="/addcontact">Add Contact</router-link>
     </div>
     <router-view/>
   </div>
@@ -21,4 +22,6 @@
     color: #3676bb
     &.router-link-exact-active
       color: #2360a1
+  diplay:flex
+  justift-content: space-between
 </style>

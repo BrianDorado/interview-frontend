@@ -30,4 +30,12 @@ export default {
 </script>
 
 <style scoped lang="sass">
+.contact-list
+  display: flex
+  justify-content: center
+  overflow: auto
+.item
+  list-style: none
+.item:nth-of-type(odd)
+  background-color:#eaf1f8
 </style>
