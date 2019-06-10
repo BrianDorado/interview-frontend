@@ -1,14 +1,13 @@
 <template>
+  <!-- action -->
   <form class="add-contact-form" @submit="_onSubmit">
-    <div v-for="field in fields" :key="field.label">
-      <label class="item">
+    <h2>Create Contact</h2>
+    <!-- <form @submit="_validate" action='apiURL' method='post'> -->
+    <div v-for="(field, index) in fields" :key="field.label"> 
+      <label for="field.label" class="item" :index="index">
         {{ field.label }}
-        <input
-          :type="field.type"
-          :placeholder="field.placeHolder"
-          v-model="field.name"
-        >
-        {{field.name}}
+        <input :type="field.type" :placeholder="field.placeHolder"
+        v-model="field.name">
       </label>
     </div>
     <button type="submit">Submit</button>
@@ -16,7 +15,7 @@
 </template>
 
 <script>
-import ContactService from '@/services/ContactService'
+import ContactService from "@/services/ContactService";
 export default {
   name: "AddContact",
   data() {
@@ -51,14 +50,24 @@ export default {
 
   methods: {
     async _onSubmit(e) {
-      console.log(this.name);
+      console.log('here')
+      console.log(this.name, this.email, this.phone, this.isFavorite);
+      // /[a-z]/.test(this.name)
+      // /[0-9]/.test(this.phone)
+      // /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.email)
       const data = {
         name: this.name,
         email: this.email,
         phone: this.phone,
         is_favorite: this.isFavorite
+      };
+      try {
+        // const res = await ContactService.createContact(data)
+      } catch (error) {
+        alert("Unable to create contact");
+        console.error(error);
       }
-      const res = await ContactService.createContact(data)
+      e.preventDefault()
     }
   }
 };
