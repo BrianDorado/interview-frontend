@@ -22,7 +22,6 @@
     color: #3676bb
     &.router-link-exact-active
       color: #2360a1
-  a
     margin-left: 20px
-  
+
 </style>

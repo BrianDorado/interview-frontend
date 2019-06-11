@@ -7,12 +7,12 @@
 
 <script>
 // @ is an alias to /src
-import ContactList from "@/components/ContactList";
+import ContactList from '@/components/ContactList'
 
 export default {
-  name: "home",
+  name: 'home',
   components: {
     ContactList
   }
-};
+}
 </script>

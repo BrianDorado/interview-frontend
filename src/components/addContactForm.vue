@@ -4,7 +4,7 @@
     <h2>Create Contact</h2>
     <div>
       <label>Name</label>
-      <input type="text" v-model="name" placeholder="John Smith" v-on:blue="_isalphaNum" required>
+      <input type="text" v-model="name" placeholder="John Smith" required>
     </div>
     <div>
       <label>Phone</label>
@@ -25,7 +25,7 @@
       </ul>
     </div>
     <div v-if="succeeded">
-      <p class='success-alert'>Contact Created!</p>
+      <p class="success-alert">Contact Created!</p>
     </div>
 
     <button type="submit">Submit</button>
@@ -33,55 +33,58 @@
 </template>
 
 <script>
-import ContactService from "@/services/ContactService";
+import ContactService from '@/services/ContactService'
+
 export default {
-  name: "AddContact",
-  data() {
+  name: 'AddContact',
+  data () {
     return {
-      name: "",
-      email: "",
-      phone: "",
+      name: '',
+      email: '',
+      phone: '',
       isFavorite: false,
       errors: [],
       succeeded: true
-
-    };
+    }
   },
 
   methods: {
-    async _onSubmit(e) {
-      this.errors = [];
+    async _onSubmit (e) {
+      this.errors = []
 
-      const emailregex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      const emailregex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
       const data = {
         name: this.name,
         email: this.email,
         phone: this.phone,
         is_favorite: this.isFavorite
-      };
+      }
 
-      if (!/[A-Za-z]/.test(this.name))
-        this.errors.push("You must enter a valid name");
+      if (!/[A-Za-z]/.test(this.name)) {
+        this.errors.push('You must enter a valid name')
+      }
 
-      if (!/[0-9]/.test(this.phone))
-        this.errors.push("You must enter a valid phone number");
+      if (!/[0-9]/.test(this.phone)) {
+        this.errors.push('You must enter a valid phone number')
+      }
 
-      if (!emailregex.test(this.email))
-        this.errors.push("You must enter a valid email");
+      if (!emailregex.test(this.email)) {
+        this.errors.push('You must enter a valid email')
+      }
 
       try {
-        // const res = await ContactService.createContact(data)
+        const res = await ContactService.createContact(data)
         this.succeeded = true
-        return res.data;
+        return res.data
       } catch (error) {
-        alert("Unable to create contact");
-        console.error(error);
+        alert('Unable to create contact')
+        console.error(error)
       }
-      e.preventDefault();
+      e.preventDefault()
     }
   }
-};
+}
 </script>
 
 <style scoped lang="sass">
