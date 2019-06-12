@@ -2,10 +2,19 @@
   <div>
     <div class="contact-list">
       <div v-if="contact.length">
-        <div v-for="field in contact" :key="field.id">
-          <p>{{field.name}}</p>
-          <p>{{field.email}}</p>
-          <p>{{field.phone}}</p>
+        <div v-for="field in contact" class='details-container' :key="field.id">
+          <div class='contact-detail'>
+            <p>Name: </p>
+            <p> {{field.name}}</p>
+          </div>
+          <div class='contact-detail'>
+            <p>Email: </p>
+            <p> {{field.email}}</p>
+          </div>
+          <div class='contact-detail'>
+            <p>Phone: </p>
+            <p> {{field.phone}}</p>
+          </div>
           <button v-on:click="rtrnToContacts">Return to Contacts</button>
         </div>
       </div>
@@ -88,5 +97,19 @@ export default {
   background-color: #b1cbe5
 .favorite
   font-weight: bold
+.details-container
+  button
+    border: none
+    background-color: #4a86c3
+    cursor: pointer
+    margin-bottom: 20px
+    color: white
+.contact-detail
+  display: flex
+  p
+    margin-left: 20px
+  p:nth-of-type(odd)
+    font-weight: bold
 
 </style>
+    // background-color: #cbe5b1
